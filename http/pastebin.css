@@ -1,0 +1,65 @@
+input{
+	display: block;
+	width: 100%;
+	margin-top: 0.5em;
+	margin-bottom: 1em;
+}
+select{
+	margin-top: 0.5em;
+	display: block;
+}
+textarea{
+	display: block;
+	width: 100%;
+	min-height: 12em;
+	resize: vertical;
+	font-family: monospace;
+	overflow: auto;
+	white-space: pre-wrap;
+	margin-top: 0.5em;
+}
+h1 {
+	margin: 0.67em 0;
+}
+.pastebin p{
+	font-size: 0.95em;
+}
+.debug{
+	display: none;
+}
+#deactivate a{
+	word-break: break-all;
+	font-family: monospace;
+}
+#deactivate a.button{
+	text-decoration: none;
+	width: 49%;
+	display: inline-block;
+}
+#deactivate a.button:hover{
+	text-decoration: none;
+	border: none;
+	padding: 0;
+}
+#deactivate button{
+	width: 100%;
+	cursor: pointer;
+}
+#deactivate a:first-of-type{
+	margin-right: 2%;
+}
+#f_impexp{
+	display: none;
+	margin-bottom: 1em;
+}
+#f_precexp{
+	display: inline;
+	width: auto;
+	margin-bottom: 0;
+}
+#f_precexp:checked ~ #f_impexp{
+	display: block;
+}
+#f_precexp:checked ~ #f_exp{
+	display: none;
+}

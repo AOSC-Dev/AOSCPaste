@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+
+
+<head>
+	<meta name="generator" content="Hugo 0.68.3" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=7" />
+    
+    
+    
+    
+    
+    <link href="https://aosc.io/css/main.min.css" rel="stylesheet">
+    <link href="https://paste.aosc.io/pastebin.css" rel="stylesheet" />
+    <title>Pastebin | AOSC Pastebin</title>
+
+    <link rel="icon" href="https://aosc.io/img/aosc.png">
+    <link rel="icon" sizes="any" type="image/svg+xml" href="https://aosc.io/img/aosc.min.svg" />
+</head>
+
+<body>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet"> 
+    <style>body{font-family:'Noto Serif SC',serif;}</style><div class="wrapper">
+        
+        <nav class="header">
+            <div class="columns" style="align-items: start;">
+                <div class="columns" style="display: flex;">
+                    <a class="clear-link" href="https://aosc.io/">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img alt="AOSC Logo" class="logo"
+                                            width="40" height="40" src="https://aosc.io/img/aosc.png"
+                                            style="height: 40px; width: 40px;">
+                                    </td>
+                                    <td style="vertical-align: bottom;"><h1 class="page-title">/Paste</h1></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </a>
+                </div>
+                <ul class="column is-two-thirds" style="word-break: keep-all;">
+                    
+                    <li><a href="https://aosc.io/news">News</a>
+                    </li><li><a href="https://aosc.io/people">People</a>
+                    </li><li><a href="https://packages.aosc.io">Packages</a>
+                    </li><li><a href="https://wiki.aosc.io">Wiki</a>
+                    </li><li><a href="https://aosc.io/about">About</a>
+                    </li><li><a href="https://aosc.io/downloads">Downloads</a>
+                    </li><li><a href="https://aosc.io/repo">Mirrors</a>
+                    </li><li><a href="https://github.com/AOSC-Dev/">Git</a>
+                    </li><li><a href="https://aosc.io/mail">Mail</a>
+                    </li><li><a href="https://paste.aosc.io/">Pastebin</a>
+                    </li></ul>
+            </div>
+        </nav>
+        <hr class="hr-nav">
+
+<div class="pastebin">
+	<form action="create/" method="POST" enctype="multipart/form-data">
+		<h1 id="welcome">Paste Info</h1>
+		<label for="f_title">Paste Title: </label>
+		<input type="text" id="f_title" name="title" value="Untitled" />
+		<label for="f_lang">Paste Language: </label>
+		<select id="f_lang" name="lang">
+			<option value="text">Text</option>
+			<option value="clike">Clike</option>
+			<option value="cmake">Cmake</option>
+			<option value="coffeescript">Coffeescript</option>
+			<option value="css">Css</option>
+			<option value="diff">Diff</option>
+			<option value="fortran">Fortran</option>
+			<option value="htmlmixed">Htmlmixed</option>
+			<option value="jinja2">Jinja2</option>
+			<option value="markdown">Markdown</option>
+			<option value="octave">Octave</option>
+			<option value="perl">Perl</option>
+			<option value="php">Php</option>
+			<option value="python">Python</option>
+			<option value="sass">Sass</option>
+			<option value="sql">Sql</option>
+			<option value="verilog">Verilog</option>
+			<option value="vhdl">Vhdl</option>
+			<option value="xml">Xml</option>
+			<option value="yaml">Yaml</option>
+		</select>
+		<hr />
+		<h1 id="main">Paste Content</h1>
+		<label for="f_upload">Paste Attachments</label><input type="file" id="f_upload" name="attach" />
+		<label for="f_text">Paste Contents</label><textarea id="f_text" name="text" placeholder="Paste your contents here..." autofocus="autofocus" autocorrect="off" autocapitalize="off" spellcheck="off"></textarea>
+		<hr />
+		<h1 id="aosc-os">Optional Info</h1>
+		<label>Paste Expiration (All time in UTC)</label>
+		<div>
+			<input type="checkbox" id="f_precexp" name="precexp" value="imprecexp" />
+			<label for="f_precexp" id="l_precexp">Imprecise Expiration</label>
+			<input type="datetime-local" id="f_exp" name="exp" placeholder="2020-01-01T00:00" />
+			<select id="f_impexp" name="impexp">
+				<option value="never">Never</option>
+				<option value="an_hour">An Hour</option>
+				<option value="a_day">A Day</option>
+				<option value="a_week">A Week</option>
+				<option value="a_month">A Month</option>
+				<option value="a_year">A Year</option>
+			</select>
+		</div>
+		<label for="f_password">Password</label><input type="password" id="f_password" name="password" />
+		<hr />
+		<input type="submit" value="Submit" />
+	</form>
+</div>
+
+        
+        <hr>
+        <div class="center footer">
+		<span>Copyleft 2011 — 2020, Members of the Community <!--| &nbsp; <a href="/lingua">Site Language</a>--></span></div>
+        
+    </div>
+</body>
+
+</html>
