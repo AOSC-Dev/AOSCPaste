@@ -68,6 +68,15 @@ def main():
     if 'password' not in formdata or not formdata['password']:
         formdata['password'] = None
 
+    ## Check if the user is really pasting something
+    if not (formdata['text'] or formdata['attachments']):
+        print('Status: 400')
+        print('Content-Type: text/html; charset=UTF-8\n')
+        print(template_head)
+        print("<h1>Empty Paste</h1>")
+        print("<p>It seems you are trying to create a paste with no content nor any attachments. Please at least write something.</p>")
+        print(template_tail)
+        exit()
     ## Now starting to build the actual query
     formdata['contents'] = formdata.pop('text')
     formdata['language'] = formdata.pop('lang')
