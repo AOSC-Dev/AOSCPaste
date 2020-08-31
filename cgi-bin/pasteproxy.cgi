@@ -49,10 +49,16 @@ def main():
             formdata['exp'] = datetime.datetime.today()+datetime.timedelta(7)
         elif stdin.getvalue('impexp') == 'a_month':
             t = datetime.datetime.today()
-            formdata['exp'] = datetime.datetime(t.year,t.month+1,t.day,t.hour,t.minute,t.second)
+            try:
+                formdata['exp'] = datetime.datetime(t.year,t.month+1,t.day,t.hour,t.minute,t.second)
+            except ValueError:
+                formdata['exp'] = datetime.datetime.today()+datetime.timedelta(30)
         elif stdin.getvalue('impexp') == 'a_year':
             t = datetime.datetime.today()
-            formdata['exp'] = datetime.datetime(t.year+1,t.month,t.day,t.hour,t.minute,t.second)
+            try:
+                formdata['exp'] = datetime.datetime(t.year+1,t.month,t.day,t.hour,t.minute,t.second)
+            except ValueError:
+                formdata['exp'] = datetime.datetime.today()+datetime.timedelta(365.25)
         else:
             formdata['exp'] = None
         if formdata['exp'] is not None:
