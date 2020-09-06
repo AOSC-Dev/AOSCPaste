@@ -4,6 +4,7 @@ import base64
 import cgi
 import datetime
 import json
+import mimetypes
 import pasteview
 import urllib.request as ur
 import urllib.parse as up
@@ -21,23 +22,28 @@ def main():
 
     ## Preprocessing some fields for formatting and others
     if 'attach' in stdin:
-        formfile = {'name':stdin['attach'].filename,'data':stdin['attach'].value}
+        formfile = [{'name':item.filename,'data':item.value} for item in stdin['attach']] if type(stdin['attach']) is list else [{'name':stdin['attach'].filename,'data':stdin['attach'].value}]
         ## If the user only uploaded a file that is a text, it shall become the paste
         if not formdata['text']:
             try:
-                text = formfile['data'].decode('UTF-8')
+                text = formfile[0]['data'].decode('UTF-8')
             except UnicodeDecodeError:
                 pass
             else:
                 formdata['text'] = text
-                formfile.pop('data')
+                formfile[0].pop('data')
             if not formdata['title'] or formdata['title'] == 'Untitled':
-                formdata['title'] = formfile['name']
+                formdata['title'] = formfile[0]['name']
         ## Otherwise base64 it and attach the file
-        if 'data' in formfile and formfile['data']:
-            formfile['size'] = len(formfile['data'])
-            formfile['data'] = base64.b64encode(formfile['data']).decode('ASCII')
-            formdata['attachments'] = [formfile]
+        if not ('data' in formfile[0] and formfile[0]['data']):
+            formfile = formfile[1:]
+        if formfile:
+            for item in formfile:
+                item['size'] = len(item['data'])
+                item['data'] = base64.b64encode(item['data']).decode('ASCII')
+                if mimetypes.guess_type(item['name'])[0] is not None:
+                    item['mime_type'] = mimetypes.guess_type(item['name'])[0]
+            formdata['attachments'] = formfile
         else:
             formfile = None
     if 'precexp' in stdin and stdin.getvalue('precexp') == 'imprecexp' and 'impexp' in stdin and stdin.getvalue('impexp'):
