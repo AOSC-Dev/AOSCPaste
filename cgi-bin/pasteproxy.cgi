@@ -107,7 +107,16 @@ def main():
         print(template_tail)
         exit()
     resp = json.loads(resp)
-    pasteview.printPaste(resp)
+    if stdin.getvalue("urlonly") is not None:
+        print("Status: 302")
+        print("Location: https://paste.aosc.io/paste/"+resp['paste_id_repr'])
+        print("Content-Type: text/plain; charset=UTF-8\n")
+        print("Paste URL:")
+        print("https://paste.aosc.io/paste/"+resp["paste_id_repr"])
+        print("Revoke URL:")
+        print("https://paste.aosc.io/deactivate/"+resp["paste_id_repr"]+"/"+resp['deactivation_token'])
+    else:
+        pasteview.printPaste(resp)
 
 if __name__ == '__main__':
     main()
